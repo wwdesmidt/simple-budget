@@ -43,14 +43,14 @@ def main():
 
     # set up arg parser
     arg_parser = argparse.ArgumentParser(
-        prog="Simple Budget",
+        prog="budget",
         description="Command line budget tracker using simple text files",
         epilog="Happy \nbudgeting :)"
     )
 
     arg_parser.add_argument("-e", 
                             "--edit",  
-                            help="edit the current weeks file\neditor defined in config file) (all other arguments will be ignored)", 
+                            help="edit the current weeks file (editor defined in config file) (all other arguments will be ignored)", 
                             dest="edit", 
                             action='store_true')
     
