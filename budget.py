@@ -29,8 +29,6 @@ class Budget:
         # if the file doesnt exist, create it and add the refill line (refill amount on monday)
         if not os.path.exists(self.get_current_file_name()):
 
-            print(f"This weeks budget doesn't exist yet. Creating, and refilling it!")
-
             monday = (datetime.now() - timedelta( days = datetime.now().weekday())).strftime(self.date_format)
             
             os.makedirs(os.path.dirname(self.get_current_file_name()), exist_ok=True)
@@ -47,8 +45,6 @@ class Budget:
 
         with open(self.get_current_file_name(), "a") as file:
             file.write(f"{date} -{amount_abs} {description}\n")
-
-        print(f"\nAdded {description} ({amount_abs})")
 
     def get_total_balance(self):
         
