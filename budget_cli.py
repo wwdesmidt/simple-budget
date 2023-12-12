@@ -8,7 +8,6 @@ import subprocess
 def init_config_file(config_path):
 
     if not os.path.exists(config_path):
-        print(f"Configuration not found. Creating default configuration: {config_path}")
 
         default_config = configparser.ConfigParser()
 
