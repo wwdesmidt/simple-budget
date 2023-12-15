@@ -59,7 +59,9 @@ class Budget:
                 with open(full_file_path,"r") as file:
                     lines = file.readlines()
                     for line in lines:
-                        total += float(line.split(" ")[1])
+                        # only process lines that have something in them
+                        if line not in ['\n', '\r\n']:
+                            total += float(line.split(" ")[1])
 
         return round(total,2)
     
@@ -70,14 +72,16 @@ class Budget:
         with open(self.get_current_file_name(), "r") as file:
             lines = file.readlines()
             for line in lines:
-                split_line = line.split(" ")
-                date = split_line[0]
-                amount = float(split_line[1])
-                description = (" ".join(split_line[2:])).strip()
+                # only process lines that have something in them
+                if line not in ['\n', '\r\n']:
+                    split_line = line.split(" ")
+                    date = split_line[0]
+                    amount = float(split_line[1])
+                    description = (" ".join(split_line[2:])).strip()
 
-                # only return expenses
-                if amount < 0:
-                    expenses.append([date, abs(amount), description])
+                    # only return expenses
+                    if amount < 0:
+                        expenses.append([date, abs(amount), description])
 
             return expenses
 
